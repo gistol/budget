@@ -1,0 +1,4 @@
+items:
+    resource: App\Controller\ItemsController
+    type: rest
+    prefix: /api
