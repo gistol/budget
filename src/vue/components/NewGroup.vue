@@ -4,7 +4,10 @@
       input.form-control(type="text" placeholder="Title" v-model="title" required)
 
     .text-right
-      button.btn.btn-primary Add
+      button.btn.btn-primary
+        i.fa.fa-plus
+        |
+        | Add
 </template>
 
 <script>

@@ -7,7 +7,10 @@
       tr(v-for="item in value")
         td {{item.title}}
         td.text-right
-          button.btn.btn-sm.btn-default(@click="modal(item)") Edit
+          button.btn.btn-sm.btn-default(@click="modal(item)")
+            i.fa.fa-pencil
+            |
+            | Edit
 
     modal(v-model="showModal" title="Edit group" @hide="onHide")
       .form-group
