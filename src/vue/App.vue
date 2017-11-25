@@ -1,6 +1,7 @@
 <template lang="pug">
-  #app
-    router-view
+  .container
+    #app
+      router-view
 </template>
 
 <script>
@@ -11,6 +12,6 @@ export default {
 
 <style lang="less">
     @import "~bootstrap/less/bootstrap.less";
-    @import "~bootswatch/paper/variables.less";
-    @import "~bootswatch/paper/bootswatch.less";
+    @import "~bootswatch/flatly/variables.less";
+    @import "~bootswatch/flatly/bootswatch.less";
 </style>
