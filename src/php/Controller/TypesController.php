@@ -1,24 +1,24 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Item;
-use App\Type\ItemType;
+use App\Entity\Type;
+use App\Type\TypeType;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ItemsController extends BaseController implements ClassResourceInterface
+class TypesController extends BaseController implements ClassResourceInterface
 {
     public function cgetAction()
     {
-        $items = $this->getDoctrine()->getRepository(Item::class)->findAll();
+        $items = $this->getDoctrine()->getRepository(Type::class)->findAll();
 
         return $this->handleData($items);
     }
 
     public function postAction(Request $request)
     {
-        $form = $this->createForm(ItemType::class);
+        $form = $this->createForm(TypeType::class);
         $form->submit($request->request->all());
 
         if ($form->isValid()) {
