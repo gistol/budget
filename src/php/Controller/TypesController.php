@@ -33,4 +33,20 @@ class TypesController extends BaseController implements ClassResourceInterface
 
         return $this->handleData($form->getErrors(), Response::HTTP_BAD_REQUEST);
     }
+
+    public function patchAction(Type $type, Request $request)
+    {
+        $form = $this->createForm(TypeType::class, $type);
+        $form->submit($request->request->all());
+
+        if ($form->isValid()) {
+            $dm = $this->getDoctrine()->getManager();
+            $dm->persist($type);
+            $dm->flush($type);
+
+            return $this->handleData($type, Response::HTTP_OK);
+        }
+
+        return $this->handleData($form->getErrors(), Response::HTTP_BAD_REQUEST);
+    }
 }

@@ -12,4 +12,11 @@ export default class GroupService {
     })
       .then(response => response.body)
   }
+
+  static edit (id, title) {
+    return Vue.http.patch(`types/${id}`, {
+      title
+    })
+      .then(response => response.body)
+  }
 }

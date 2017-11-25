@@ -1,8 +1,10 @@
 <template lang="pug">
   div
-    h3 Groups
+    h3 Add group
     new-group(@input="added")
-    group-list(:value="list")
+
+    h3 Groups
+    group-list(:value="list" @input="edited")
 </template>
 
 <script>
@@ -33,6 +35,13 @@
         GroupService.add(value)
           .then(item => {
             this.list.push(item)
+          })
+      },
+      edited: function (value) {
+        GroupService.edit(value.id, value.title)
+          .then(item => {
+            const foundIndex = this.list.findIndex(x => x.id === item.id)
+            this.list.splice(foundIndex, 1, item)
           })
       }
     }
