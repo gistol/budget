@@ -11,16 +11,19 @@
             button.btn.btn-sm.btn-default(@click="modal(item)")
               i.fa.fa-lg.fa-pencil
 
-            button.btn.btn-sm.btn-danger(@click="del(item)")
+            button.btn.btn-sm.btn-danger(@click="$refs.confirm.open('Remove '+item.title+'?', item)")
               i.fa.fa-lg.fa-times
 
     modal(v-model="showModal" title="Edit group" @hide="onHide")
       .form-group
         input.form-control(type="text" placeholder="Title" v-model="modalData.title" required)
+
+    confirm(ref="confirm" @confirmed="del")
 </template>
 
 <script>
   import { Modal } from 'uiv'
+  import Confirm from '../Confirm'
 
   export default {
     props: ['value'],
@@ -31,7 +34,8 @@
       }
     },
     components: {
-      modal: Modal
+      modal: Modal,
+      confirm: Confirm
     },
     methods: {
       modal: function (item) {
