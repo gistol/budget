@@ -7,10 +7,12 @@
       tr(v-for="item in value")
         td {{item.title}}
         td.text-right
-          button.btn.btn-sm.btn-default(@click="modal(item)")
-            i.fa.fa-pencil
-            |
-            | Edit
+          .btn-group
+            button.btn.btn-sm.btn-default(@click="modal(item)")
+              i.fa.fa-lg.fa-pencil
+
+            button.btn.btn-sm.btn-danger(@click="del(item)")
+              i.fa.fa-lg.fa-times
 
     modal(v-model="showModal" title="Edit group" @hide="onHide")
       .form-group
@@ -40,6 +42,9 @@
         if (value === 'ok') {
           this.$emit('input', this.modalData)
         }
+      },
+      del: function (value) {
+        this.$emit('del', value.id)
       }
     }
   }

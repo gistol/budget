@@ -4,7 +4,7 @@
     new-group(@input="added")
 
     h3 Groups
-    group-list(:value="list" @input="edited")
+    group-list(:value="list" @input="edited" @del="deleted")
 </template>
 
 <script>
@@ -37,11 +37,20 @@
             this.list.push(item)
           })
       },
+
       edited: function (value) {
         GroupService.edit(value.id, value.title)
           .then(item => {
             const foundIndex = this.list.findIndex(x => x.id === item.id)
             this.list.splice(foundIndex, 1, item)
+          })
+      },
+
+      deleted: function (id) {
+        GroupService.delete(id)
+          .then(() => {
+            const foundIndex = this.list.findIndex(x => x.id === id)
+            this.list.splice(foundIndex, 1)
           })
       }
     }

@@ -49,4 +49,13 @@ class TypesController extends BaseController implements ClassResourceInterface
 
         return $this->handleData($form->getErrors(), Response::HTTP_BAD_REQUEST);
     }
+
+    public function deleteAction(Type $type)
+    {
+        $dm = $this->getDoctrine()->getManager();
+        $dm->remove($type);
+        $dm->flush($type);
+
+        return $this->handleData(null, Response::HTTP_NO_CONTENT);
+    }
 }
