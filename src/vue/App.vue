@@ -4,6 +4,8 @@
     .container
       #app
         router-view
+
+    vue-progress-bar
 </template>
 
 <script>

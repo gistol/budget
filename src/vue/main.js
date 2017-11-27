@@ -3,12 +3,15 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import App from './App'
+import VueProgressBar from 'vue-progressbar'
+import VueResourceProgressBarInterceptor from 'vue-resource-progressbar-interceptor'
 import router from './router/index'
 
 Vue.use(VueResource)
-// Vue.http.options.root = 'http://budget.xorik.ru/api/'
-Vue.http.options.root = '/api/'
+Vue.use(VueProgressBar)
+Vue.use(VueResourceProgressBarInterceptor)
 
+Vue.http.options.root = '/api/'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -16,7 +16,9 @@
     "font-awesome": "^4.7.0",
     "uiv": "^0.14.1",
     "vue": "^2.5.2",
+    "vue-progressbar": "^0.7.3",
     "vue-resource": "^1.3.4",
+    "vue-resource-progressbar-interceptor": "^1.1.9",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
