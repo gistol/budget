@@ -1,17 +1,18 @@
 <template lang="pug">
-  table.table.table-striped(width="100%")
+  table.table.table-striped.table-condensed(width="100%")
     thead
-      th Title
-      th.text-right Actions
+      tr
+        th Title
+        th.text-right Actions
     tbody
       tr(v-for="item in value")
         td {{item.title}}
         td.text-right
           .btn-group
-            button.btn.btn-sm.btn-default(@click="modal(item)")
+            button.btn.btn-default(@click="modal(item)")
               i.fa.fa-lg.fa-pencil
 
-            button.btn.btn-sm.btn-danger(@click="$refs.confirm.open('Remove '+item.title+'?', item)")
+            button.btn.btn-danger(@click="$refs.confirm.open('Remove '+item.title+'?', item)")
               i.fa.fa-lg.fa-times
 
     modal(v-model="showModal" title="Edit group" @hide="onHide")
