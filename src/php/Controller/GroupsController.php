@@ -1,24 +1,24 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Type;
-use App\Type\TypeType;
+use App\Entity\Group;
+use App\Type\GroupType;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class TypesController extends BaseController implements ClassResourceInterface
+class GroupsController extends BaseController implements ClassResourceInterface
 {
     public function cgetAction()
     {
-        $items = $this->getDoctrine()->getRepository(Type::class)->findAll();
+        $items = $this->getDoctrine()->getRepository(Group::class)->findAll();
 
         return $this->handleData($items);
     }
 
     public function postAction(Request $request)
     {
-        $form = $this->createForm(TypeType::class);
+        $form = $this->createForm(GroupType::class);
         $form->submit($request->request->all());
 
         if ($form->isValid()) {
@@ -34,9 +34,9 @@ class TypesController extends BaseController implements ClassResourceInterface
         return $this->handleData($form->getErrors(), Response::HTTP_BAD_REQUEST);
     }
 
-    public function patchAction(Type $type, Request $request)
+    public function patchAction(Group $type, Request $request)
     {
-        $form = $this->createForm(TypeType::class, $type);
+        $form = $this->createForm(GroupType::class, $type);
         $form->submit($request->request->all());
 
         if ($form->isValid()) {
@@ -50,7 +50,7 @@ class TypesController extends BaseController implements ClassResourceInterface
         return $this->handleData($form->getErrors(), Response::HTTP_BAD_REQUEST);
     }
 
-    public function deleteAction(Type $type)
+    public function deleteAction(Group $type)
     {
         $dm = $this->getDoctrine()->getManager();
         $dm->remove($type);

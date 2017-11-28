@@ -2,7 +2,7 @@
 namespace App\Type;
 
 use App\Entity\Item;
-use App\Entity\Type;
+use App\Entity\Group;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\BaseType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -18,7 +18,7 @@ class ItemType extends BaseType
                 'scale' => 0
             ])
             ->add('type', EntityType::class, [
-                'class' => Type::class
+                'class' => Group::class
             ])
             ->add('description');
     }

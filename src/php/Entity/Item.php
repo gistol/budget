@@ -29,11 +29,11 @@ class Item
     protected $date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Type")
+     * @ORM\ManyToOne(targetEntity="Group")
      * @ORM\JoinColumn(nullable=false)
-     * @var Type
+     * @var Group
      */
-    protected $type;
+    protected $group;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -71,14 +71,14 @@ class Item
 //        $this->date = $date;
 //    }
 
-    public function getType()
+    public function getGroup() : Group
     {
-        return $this->type;
+        return $this->group;
     }
 
-    public function setType($type) : void
+    public function setGroup(Group $group) : void
     {
-        $this->type = $type;
+        $this->group = $group;
     }
 
     public function getDescription() : string

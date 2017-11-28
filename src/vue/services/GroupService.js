@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-const BASEURL = 'types'
+const BASEURL = 'groups'
 
 export default class GroupService {
   static getList () {

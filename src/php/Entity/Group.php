@@ -6,8 +6,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
+ * @ORM\Table(name="type")
  */
-class Type
+class Group
 {
     /**
      * @ORM\Column(type="integer")

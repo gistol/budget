@@ -4,6 +4,6 @@ items:
     prefix: /api
 
 types:
-    resource: App\Controller\TypesController
+    resource: App\Controller\GroupsController
     type: rest
     prefix: /api
