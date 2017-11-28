@@ -5,7 +5,7 @@
         th Title
         th.text-right Actions
     tbody
-      tr(v-for="item in value")
+      tr(v-for="item in list")
         td {{item.title}}
         td.text-right
           .btn-group
@@ -37,6 +37,11 @@
     components: {
       modal: Modal,
       confirm: Confirm
+    },
+    computed: {
+      list: function () {
+        return this.value.sort((a, b) => a.title.localeCompare(b.title))
+      }
     },
     methods: {
       modal: function (item) {
