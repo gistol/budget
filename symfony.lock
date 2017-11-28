@@ -283,5 +283,20 @@
             "version": "3.3",
             "ref": "c72d107d077f1654428edaed69415d0228c1aefe"
         }
+    },
+    "monolog/monolog": {
+        "version": "1.23.0"
+    },
+    "symfony/monolog-bridge": {
+        "version": "v3.3.13"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.1",
+            "ref": "c24944bd87dacf0bb8fa218dc21e4a70fff56882"
+        }
     }
 }
