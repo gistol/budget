@@ -1,6 +1,9 @@
 <template lang="pug">
-  modal(v-model="isOpen" size="sm" :header="false" @hide="onHide")
+  modal(v-model="isOpen" size="sm" :header="false")
     p {{ text }}
+    div(slot="footer")
+      button.btn.btn-default(@click="isOpen=false") Cancel
+      button.btn.btn-danger(@click="confirm()") Ok
 </template>
 
 <script>
@@ -26,10 +29,9 @@
         this.text = text
         this.isOpen = true
       },
-      onHide: function (value) {
-        if (value === 'ok') {
-          this.$emit('confirmed', _value)
-        }
+      confirm: function (value) {
+        this.isOpen = false
+        this.$emit('confirmed', _value)
       }
     }
   }
