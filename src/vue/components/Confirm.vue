@@ -1,9 +1,9 @@
 <template lang="pug">
-  modal(v-model="isOpen" size="sm" :header="false")
+  modal(v-model="isOpen" size="sm" :header="false" auto-focus)
     p {{ text }}
     div(slot="footer")
       button.btn.btn-default(@click="isOpen=false") Cancel
-      button.btn.btn-danger(@click="confirm()") Ok
+      button.btn.btn-danger(@click="confirm()" data-action="auto-focus") Ok
 </template>
 
 <script>

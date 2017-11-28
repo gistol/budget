@@ -15,9 +15,9 @@
             button.btn.btn-danger(@click="$refs.confirm.open('Remove '+item.title+'?', item)")
               i.fa.fa-lg.fa-times
 
-    modal(v-model="showModal" title="Edit group" @hide="onHide")
+    modal(v-model="showModal" title="Edit group" @hide="onHide" auto-focus)
       .form-group
-        input.form-control(type="text" placeholder="Title" v-model="modalData.title" required)
+        input.form-control(type="text" placeholder="Title" v-model="modalData.title" data-action="auto-focus" required)
 
     confirm(ref="confirm" @confirmed="del")
 </template>
