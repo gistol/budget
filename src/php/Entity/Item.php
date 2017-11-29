@@ -2,6 +2,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -18,6 +19,7 @@ class Item
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\GreaterThan(0)
      * @var int
      */
     protected $price = 0;
@@ -31,6 +33,7 @@ class Item
     /**
      * @ORM\ManyToOne(targetEntity="Group")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotNull()
      * @var Group
      */
     protected $group;
@@ -40,11 +43,6 @@ class Item
      * @var string
      */
     protected $description = '';
-
-    public function __construct()
-    {
-        $this->date = new \DateTime();
-    }
 
     public function getId() : int
     {
@@ -61,17 +59,17 @@ class Item
         $this->price = $price;
     }
 
-    public function getDate() : \DateTime
+    public function getDate() : ?\DateTime
     {
         return $this->date;
     }
 
-//    public function setDate(\DateTime $date) : void
-//    {
-//        $this->date = $date;
-//    }
+    public function setDate(\DateTime $date) : void
+    {
+        $this->date = $date;
+    }
 
-    public function getGroup() : Group
+    public function getGroup() : ?Group
     {
         return $this->group;
     }

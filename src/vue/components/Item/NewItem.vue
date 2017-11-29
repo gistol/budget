@@ -2,46 +2,59 @@
   form(@submit.prevent="submit")
     .form-group
       .input-group
-        input.form-control(type="number" placeholder="Price" v-model="data.sum" required)
+        input.form-control(type="number" placeholder="Price" v-model="data.price" required)
         span.input-group-addon ₽
 
     .form-group
       select.form-control(v-model="data.group" required)
         option(disabled selected value="") - Group -
-        option(v-for="(text, id) in groups" v-bind:value="id") {{text}}
+        option(v-for="group in groups" :value="group.id") {{group.title}}
 
     .form-group
-      input.form-control(type="text" placeholder="Description" v-model="data.descr")
+      input.form-control(type="text" placeholder="Description" v-model="data.description")
+
+    .form-group
+      input.form-control(type="date" placeholder="Date" v-model="data.date")
 
     .text-right
-      button.btn.btn-primary(:disabled="submitting") Add
+      button.btn.btn-primary Add
+
+    pre {{ data }}
 </template>
 
 <script>
+  import GroupService from '@/services/GroupService'
+
   const DEFAULT_DATA = {
-    sum: '',
-    descr: '',
-    group: ''
+    price: '',
+    description: '',
+    group: '',
+    date: ''
   }
 
   export default {
     data () {
       return {
         data: Object.assign({}, DEFAULT_DATA),
-        groups: {
-          '1': 'First',
-          '2': 'Second'
-        },
+        groups: [],
         submitting: false
       }
     },
+
+    created: function () {
+      GroupService.getList()
+        .then(response => {
+          this.groups = response.sort((a, b) => a.title.localeCompare(b.title))
+        })
+    },
+
     methods: {
       submit: function () {
-        this.submitting = true
-        setTimeout(() => {
-          this.data = Object.assign({}, DEFAULT_DATA)
-          this.submitting = false
-        }, 1000)
+        let prevDate = this.data.date
+
+        this.$emit('input', this.data)
+        this.data = Object.assign({}, DEFAULT_DATA)
+        this.data.date = prevDate
       }
     }
   }
