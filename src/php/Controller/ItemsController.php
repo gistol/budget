@@ -1,17 +1,27 @@
 <?php
 namespace App\Controller;
 
-use App\Entity\Item;
+use App\Repository\ItemRepository;
 use App\Type\ItemType;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Routing\ClassResourceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ItemsController extends BaseController implements ClassResourceInterface
 {
-    public function cgetAction()
+    /**
+     * @Rest\Get("/items")
+     * @Rest\QueryParam(name="offset", requirements="\d+", default="0")
+     * @Rest\QueryParam(name="limit", requirements="\d+", default="10")
+     */
+    public function cgetAction(ParamFetcher $paramFetcher, ItemRepository $repository)
     {
-        $items = $this->getDoctrine()->getRepository(Item::class)->findAll();
+        $offset = $paramFetcher->get('offset');
+        $limit = $paramFetcher->get('limit');
+
+        $items = $repository->get($offset, $limit);
 
         return $this->handleData($items);
     }
