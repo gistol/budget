@@ -22,6 +22,6 @@ export default {
 <style lang="less">
     @import "~font-awesome/less/font-awesome.less";
     @import "~bootstrap/less/bootstrap.less";
-    @import "~bootswatch/flatly/variables.less";
-    @import "~bootswatch/flatly/bootswatch.less";
+    @import "~bootswatch/lumen/variables.less";
+    @import "~bootswatch/lumen/bootswatch.less";
 </style>
