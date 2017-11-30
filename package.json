@@ -14,6 +14,7 @@
     "bootstrap": "^3.3.7",
     "bootswatch": "^3.3.7",
     "font-awesome": "^4.7.0",
+    "moment": "^2.19.3",
     "uiv": "^0.14.1",
     "vue": "^2.5.2",
     "vue-progressbar": "^0.7.3",

@@ -18,12 +18,11 @@
 
     .text-right
       button.btn.btn-primary Add
-
-    pre {{ data }}
 </template>
 
 <script>
   import GroupService from '@/services/GroupService'
+  import * as moment from 'moment/moment'
 
   const DEFAULT_DATA = {
     price: '',
@@ -34,8 +33,12 @@
 
   export default {
     data () {
+      let date = moment().format('Y-MM-DD')
+
       return {
-        data: Object.assign({}, DEFAULT_DATA),
+        data: Object.assign({}, DEFAULT_DATA, {
+          date
+        }),
         groups: [],
         submitting: false
       }
