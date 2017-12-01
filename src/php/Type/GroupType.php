@@ -10,7 +10,9 @@ class GroupType extends BaseType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title');
+        $builder
+            ->add('title')
+            ->add('icon');
     }
 
     public function configureOptions(OptionsResolver $resolver)

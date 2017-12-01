@@ -23,7 +23,14 @@ class Group
      * @Assert\NotBlank()
      * @var string
      */
-    protected $title;
+    protected $title = '';
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     * @var string
+     */
+    protected $icon = '';
 
     public function __toString()
     {
@@ -35,13 +42,23 @@ class Group
         return $this->id;
     }
 
-    public function getTitle()
+    public function getTitle() : string
     {
         return $this->title;
     }
 
-    public function setTitle($title) : void
+    public function setTitle(string $title) : void
     {
         $this->title = $title;
+    }
+
+    public function getIcon() : string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(string $icon) : void
+    {
+        $this->icon = $icon;
     }
 }

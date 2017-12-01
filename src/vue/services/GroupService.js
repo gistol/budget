@@ -8,10 +8,8 @@ export default class GroupService {
       .then(response => response.body)
   }
 
-  static add (title) {
-    return Vue.http.post(BASEURL, {
-      title
-    })
+  static add (data) {
+    return Vue.http.post(BASEURL, data)
       .then(response => response.body)
   }
 
