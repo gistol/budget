@@ -33,8 +33,15 @@
         showNavbar: false
       }
     },
+
     components: {
       collapse: Collapse
+    },
+
+    watch: {
+      '$route': function () {
+        this.showNavbar = false
+      }
     }
   }
 </script>
