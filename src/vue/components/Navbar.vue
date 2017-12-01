@@ -8,7 +8,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <router-link class="navbar-brand" to="/">Budget app</router-link>
+        <router-link class="navbar-brand" to="/">
+          <i class="fa fa-dollar fa-lg"></i>
+        </router-link>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
