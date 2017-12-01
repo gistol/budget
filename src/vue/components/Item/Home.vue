@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     h3 Home
-    new-item(@input="added")
+    new-item(ref="form" @input="added")
 
     h3 List
     item-list(:value="list")
@@ -32,8 +32,12 @@
     },
 
     methods: {
-      added (data) {
+      added: function (data) {
         ItemService.add(data)
+          .then(item => {
+            this.list.unshift(item)
+            this.$refs.form.clear()
+          })
       }
     }
   }

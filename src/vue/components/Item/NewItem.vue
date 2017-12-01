@@ -53,11 +53,15 @@
 
     methods: {
       submit: function () {
-        let prevDate = this.data.date
-
         this.$emit('input', this.data)
-        this.data = Object.assign({}, DEFAULT_DATA)
-        this.data.date = prevDate
+      },
+
+      clear: function () {
+        const prevDate = this.data.date
+
+        this.data = Object.assign({}, DEFAULT_DATA, {
+          date: prevDate
+        })
       }
     }
   }
