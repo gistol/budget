@@ -1,13 +1,16 @@
 <template lang="pug">
   div
     div.row(v-for="item in value")
-      .col-xs-8
+      .col-xs-2
+        i.fa.fa-3x.fa-fw.text-muted(:class="'fa-' + item.group.icon" style="position:absolute")
+
+      .col-xs-6
         b.text-success {{item.group.title}}
 
       .col-xs-4.text-right.price
         b.text-primary {{item.price}} ₽
 
-      .col-xs-8
+      .col-xs-offset-2.col-xs-6
         .text-muted.crop
           b(v-if="item.description") {{item.description}}
           i(v-else) - no description -
