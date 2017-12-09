@@ -5,7 +5,7 @@
 
     .form-group
       p.form-control-static
-        a(@click.prevent="$refs.iconModal.open()" href)
+        a(@click.prevent="$refs.iconModal.open()" href="")
           i.fa.fa-2x(:class="'fa-' + data.icon")
         |
         | Icon

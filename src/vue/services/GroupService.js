@@ -13,10 +13,8 @@ export default class GroupService {
       .then(response => response.body)
   }
 
-  static edit (id, title) {
-    return Vue.http.patch(`${BASEURL}/${id}`, {
-      title
-    })
+  static edit (id, data) {
+    return Vue.http.patch(`${BASEURL}/${id}`, data)
       .then(response => response.body)
   }
 

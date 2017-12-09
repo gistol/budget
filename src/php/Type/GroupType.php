@@ -19,6 +19,7 @@ class GroupType extends BaseType
     {
         $resolver->setDefaults(array(
             'data_class' => Group::class,
+            'method' => 'PATCH',
         ));
     }
 }

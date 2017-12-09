@@ -37,7 +37,7 @@ class GroupsController extends BaseController implements ClassResourceInterface
     public function patchAction(Group $type, Request $request)
     {
         $form = $this->createForm(GroupType::class, $type);
-        $form->submit($request->request->all());
+        $form->submit($request->request->all(), false);
 
         if ($form->isValid()) {
             $dm = $this->getDoctrine()->getManager();

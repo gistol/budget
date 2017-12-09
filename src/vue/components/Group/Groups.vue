@@ -39,7 +39,10 @@
       },
 
       edited: function (value) {
-        GroupService.edit(value.id, value.title)
+        var id = value.id
+        delete value.id
+
+        GroupService.edit(id, value)
           .then(item => {
             const foundIndex = this.list.findIndex(x => x.id === item.id)
             this.list.splice(foundIndex, 1, item)

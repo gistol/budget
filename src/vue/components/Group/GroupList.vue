@@ -2,11 +2,17 @@
   table.table.table-striped.table-condensed(width="100%")
     thead
       tr
+        th Icon
         th Title
         th.text-right Actions
     tbody
       tr(v-for="item in list")
+        td
+          a(@click.prevent="changeIcon(item.id)" href="")
+            i.fa.fa-2x(:class="item.icon ? 'fa-'+item.icon : 'fa-list'")
+
         td {{item.title}}
+
         td.text-right
           .btn-group
             button.btn.btn-default(@click="modal(item)")
@@ -20,11 +26,16 @@
         input.form-control(type="text" placeholder="Title" v-model="modalData.title" data-action="auto-focus" required)
 
     confirm(ref="confirm" @confirmed="del")
+
+    icon-select(ref="icon" @input="selectIcon")
 </template>
 
 <script>
   import { Modal } from 'uiv'
   import Confirm from '../Confirm'
+  import IconSelect from '../IconSelect'
+
+  let currentId = null
 
   export default {
     props: ['value'],
@@ -36,7 +47,8 @@
     },
     components: {
       modal: Modal,
-      confirm: Confirm
+      confirm: Confirm,
+      'icon-select': IconSelect
     },
     computed: {
       list: function () {
@@ -55,6 +67,16 @@
       },
       del: function (value) {
         this.$emit('del', value.id)
+      },
+      changeIcon: function (id) {
+        currentId = id
+        this.$refs.icon.open()
+      },
+      selectIcon: function (icon) {
+        this.$emit('input', {
+          id: currentId,
+          icon: icon
+        })
       }
     }
   }
