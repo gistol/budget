@@ -14,7 +14,7 @@ class ItemsController extends BaseController implements ClassResourceInterface
     /**
      * @Rest\Get("/items")
      * @Rest\QueryParam(name="offset", requirements="\d+", default="0")
-     * @Rest\QueryParam(name="limit", requirements="\d+", default="10")
+     * @Rest\QueryParam(name="limit", requirements="\d+", default="30")
      */
     public function cgetAction(ParamFetcher $paramFetcher, ItemRepository $repository)
     {

@@ -17,7 +17,8 @@ class ItemRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('i');
 
         return $qb
-            ->orderBy('i.id', 'DESC')
+            ->orderBy('i.date', 'DESC')
+            ->addOrderBy('i.id', 'DESC')
             ->setFirstResult($offset)
             ->setMaxResults($limit)
             ->getQuery()
